@@ -5,6 +5,8 @@ import { User } from './models/userModel.js';
 
 const app = express();
 
+app.use(express.json());
+
 app.get("/", (request, response) => {
   console.log(request);
   return response.status(234).send('Welcome to matriApp');
@@ -21,7 +23,7 @@ app.post('/users', async (request, response) => {
       !request.body.job ||
       !request.body.zodiac
     ){
-      return response.status(400).send({message : error.message});
+      return response.status(400).send({message : error.message, reason: "Missing required field(s)"});
     }
 
     const newUser = {
@@ -51,6 +53,59 @@ app.post('/users', async (request, response) => {
     response.status(500).send({message : error.message});
   }
 });
+
+
+app.get('/users', async (request,response) => {
+  try{
+    const users = await User.find({});
+    response.status(200).json({
+      count: users.length,
+      data: users
+    });
+  }
+  catch(error){
+    console.log(error.message);
+    response.status(500).send(error.message);
+  }
+})
+
+app.get('/users/:id', async (request,response) => {
+  try{
+    const { id } = request.params;
+    const user = await User.findById(id);
+    response.status(200).json(user);
+  }
+  catch(error){
+    console.log(error.message);
+    response.status(500).send(error.message);
+  }
+})
+
+app.put('/users/:id', async (request, response) => {
+  try{
+    if(
+      !request.body.name ||
+      !request.body.age ||
+      !request.body.height ||
+      !request.body.religion ||
+      !request.body.isMale ||
+      !request.body.job ||
+      !request.body.zodiac
+    ){
+      return response.status(400).send({message : error.message, reason: "Missing required field(s)"});
+    }  
+    const { id } = request.params;
+    const user = await User.findByIdAndUpdate(id, request.body);    
+    if(!result){
+      return response.status(404).json({message : "User not found"});
+    }
+    return response.status(200).send({message : "User updated successfully"});
+  }
+  catch(error){
+    console.log(error.message);
+    response.status(500).send(error.message);
+  }
+})
 
 mongoose
   .connect(mongoURL)
