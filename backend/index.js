@@ -50,12 +50,15 @@ app.post('/users', async (request, response) => {
     console.log(error.message);
     response.status(500).send({message : error.message});
   }
-})
+});
 
 mongoose
   .connect(mongoURL)
   .then(() => {
     console.log('App is listening');
+    app.listen(PORT, () => {
+      console.log(`On port : ${PORT}`);
+    })
   })
 .catch((error) => {
     console.log(error.message);
