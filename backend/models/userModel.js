@@ -29,7 +29,6 @@ const userSchema = mongoose.Schema(
     img: {
       data: Buffer,
       contentType: String,
-      required: false,
     },
     zodiac: {
       type: String,
@@ -37,27 +36,21 @@ const userSchema = mongoose.Schema(
     },
     meanAgePref: {
       type : Number,
-      required: false,
     },
     varAgePref: {
       type: Number,
-      required: false,
     },
     meanHeightPref: {
     type: Number,
-    required: false,
     },
     varHeightPref: {
       type: Number,
-      required: false,
     },
     relPref: {
       type: String,
-      required: false,
     },
     zodPref: {
       type: String,
-      required: false,
     },
   }
 );
