@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { PORT, mongoURL } from "./config.js";
 import mongoose from 'mongoose';
 import { User } from './models/userModel.js';
@@ -6,6 +7,8 @@ import { User } from './models/userModel.js';
 const app = express();
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get("/", (request, response) => {
   console.log(request);
