@@ -8,7 +8,7 @@
   justify-content : space-between;
   gap: 120px;
   object-fit : cover;
-  background-image : url(../assets/divBack.jpg);
+  background-image : url(../assets/divBack.png);
   background-repeat : no-repeat;
   background-size : cover;
   color : #ffffff;
@@ -16,6 +16,7 @@
 
 .navBar {
   display : flex;
+  position : fixed;
   height : 50px;
   width : 100%;
   padding-top: 15px;
@@ -24,7 +25,7 @@
 }
 
 .headerText {
+  margin-top : 120px;
   align : center;
   text-align : center;
-  color : #101010;
 }

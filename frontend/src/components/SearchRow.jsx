@@ -39,7 +39,7 @@ return (
         <input onChange = {e => setRel(e.target.value)}></input> 
       </div>
     </form>
-    <button onClick = {updatePref}>Search!</button>
+    <button onClick = {updatePref}>Find!</button>
   </div>
 );
 }
