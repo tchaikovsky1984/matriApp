@@ -18,4 +18,10 @@ form {
   justify-content: space-around;
 }
 
-
+select, input{
+  background : transparent;
+  background-color : rgba(0,0,0,0.5);
+  border : 0.5px solid black;
+  border-radius : 5px;
+  color : #ffffff;
+}

@@ -99,7 +99,7 @@ app.put('/users/:id', async (request, response) => {
     }  
     const { id } = request.params;
     const user = await User.findByIdAndUpdate(id, request.body);    
-    if(!result){
+    if(!user){
       return response.status(404).json({message : "User not found"});
     }
     return response.status(200).send({message : "User updated successfully"});

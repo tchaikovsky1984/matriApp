@@ -5,14 +5,26 @@
   margin : 0px;
   display : flex;
   flex-direction : column;
-  justify-content : space-around;
-  background-image : ../assets/divBack.jpg;
+  justify-content : space-between;
+  gap: 120px;
+  object-fit : cover;
+  background-image : url(../assets/divBack.jpg);
+  background-repeat : no-repeat;
+  background-size : cover;
+  color : #ffffff;
 }
 
 .navBar {
   display : flex;
   height : 50px;
   width : 100%;
+  padding-top: 15px;
   flex-direction : row;
   justify-content: space-around;
+}
+
+.headerText {
+  align : center;
+  text-align : center;
+  color : #101010;
 }

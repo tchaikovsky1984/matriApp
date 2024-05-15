@@ -11,6 +11,7 @@ function Header() {
         <a>Login</a>
         <a>Contact</a>
       </div>
+      <h1 className = "headerText">Find your ideal partner</h1>
       <SearchRow></SearchRow>
     </div>
   );
