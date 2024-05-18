@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import Header from './components/Header.jsx';
-import Card from './components/Card.jsx';
+import Lower from './components/Lower.jsx';
 
 function App() {
   return (
     <div>
       <Header></Header>
-      <Card head = "Efficient Matrimony" text = "lorem ipsum dolmet"></Card>
+      <Lower></Lower>
     </div>
   );
 }

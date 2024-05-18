@@ -1,0 +1,8 @@
+.lowerContainer {
+  display : flex;
+  flex-direction : column;
+  justify-content : space-evenly;
+  background-color : #100b1b;
+  padding : 0;
+  margin : 0;
+}
