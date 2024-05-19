@@ -9,7 +9,19 @@ const app = express();
 
 app.use(express.json());
 
+// allowing all origins while in dev cors(*)
 app.use(cors());
+
+/*
+ * allowing custom origins & methods while in production
+  * app.use(
+    * cors({
+    *   origin : 'http://localhost:xxxx','anoter one',
+    *   methods : ['GET', 'POST', 'PUT', 'DELETE'],
+    *   allowedHeaders : ['Content-Type'],
+    * })
+    * );
+*/
 
 app.get("/", (request, response) => {
   console.log(request);
