@@ -70,19 +70,23 @@ app.get('/users', async (request,response) => {
     console.log(error.message);
     response.status(500).send(error.message);
   }
-})
+});
 
 app.get('/users/:id', async (request,response) => {
   try{
     const { id } = request.params;
     const user = await User.findById(id);
+    if(!user){
+      console.log('not found');
+      return response.status(404).json({ message : 'User not found'});
+    }
     response.status(200).json(user);
   }
   catch(error){
     console.log(error.message);
     response.status(500).send(error.message);
   }
-})
+});
 
 app.put('/users/:id', async (request, response) => {
   try{
@@ -108,7 +112,23 @@ app.put('/users/:id', async (request, response) => {
     console.log(error.message);
     response.status(500).send(error.message);
   }
-})
+});
+
+app.delete('/users/:id', async(request, response) => {
+  try{
+    const { id } = request.params;
+    const user = await User.findByIdAndDelete(id);
+
+    if(!user){
+      return response.status(404).json({ message : 'User not found '});
+    }
+    return response.status(200).json({ message : 'User deleted successfully'});
+  }
+  catch(error){
+    console.log(error.message);
+    return response.status(500).send( {message : error.message});
+  }
+});
 
 mongoose
   .connect(mongoURL)
