@@ -1,8 +1,9 @@
 .lowerContainer {
   display : flex;
+  border-top : 5px solid #ffff9b; 
   flex-direction : column;
   justify-content : space-evenly;
-  background-color : #100b1b;
+  background-color : #0d061a;
   padding : 0;
   margin : 0;
 }
