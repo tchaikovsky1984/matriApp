@@ -58,7 +58,7 @@ router.get('/', async (request,response) => {
     const rel = request.body.relPref;
     const zod = request.body.zodiac;
     const man = request.body.isMale;
-    if(all){
+    if(all || !minAge || !maxAge || !minHeight || !maxHeight || !rel || !zod || !man){
       const users = await User.find({});
       console.log(users);
       response.status(200).json({
