@@ -50,11 +50,44 @@ router.post('/', async (request, response) => {
 // route to get all users
 router.get('/', async (request,response) => {
   try{
-    const users = await User.find({});
-    response.status(200).json({
-      count: users.length,
-      data: users
-    });
+    const all = request.body.all;
+    const minAge = request.body.meanAgePref - request.body.varAgePref;
+    const maxAge = request.body.meanAgePref + request.body.varAgePref;
+    const minHeight = request.body.meanHeightPref - request.body.varHeightPref;
+    const maxHeight = request.body.meanHeightPref + request.body.varHeightPref;
+    const rel = request.body.relPref;
+    const zod = request.body.zodiac;
+    const man = request.body.isMale;
+    if(all){
+      const users = await User.find({});
+      console.log(users);
+      response.status(200).json({
+        count: users.length,
+        data: users
+      });
+    }
+    else{
+      console.log(minAge);
+      console.log(maxAge);
+      console.log(minHeight);
+      console.log(maxHeight);
+      console.log(rel);
+      console.log(zod);
+      console.log(man);
+      const users = await User.find({
+        $and : [
+          { $and : [ { age : { $gte : minAge}}, { age : { $lte : maxAge}}]},
+          { $and : [ { age : { $gte : minHeight}}, { age : { $lte : maxAge }}]},
+          { religion : rel},
+          { zodiac : zod},
+          { isMale : man}
+        ]
+      });
+      response.status(200).json({
+        count: users.length,
+        data: users
+      });
+    }
   }
   catch(error){
     console.log(error.message);
@@ -122,5 +155,6 @@ router.delete('/:id', async(request, response) => {
     return response.status(500).send( {message : error.message});
   }
 });
+
 
 export default router;
