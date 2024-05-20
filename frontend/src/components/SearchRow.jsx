@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './SearchRow.css';
 
 function SearchRow(){
@@ -39,7 +40,7 @@ return (
         <input onChange = {e => setRel(e.target.value)}></input> 
       </div>
     </form>
-    <button onClick = {updatePref}>Find!</button>
+    <Link to='/match'><button onClick = {updatePref}>Find!</button></Link>
   </div>
 );
 }
