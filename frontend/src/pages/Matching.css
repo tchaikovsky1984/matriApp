@@ -1,0 +1,7 @@
+.seen {
+  visibility : visible;
+}
+
+.unseen {
+  visibility : hidden;
+}

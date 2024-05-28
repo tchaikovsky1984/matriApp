@@ -1,0 +1,29 @@
+.cardDiv {
+  height : 200px;
+  display : flex;
+  flex-direction : row;
+  justify-content : space-around;
+  margin : 10%;
+  padding : 5%;
+  width : auto;
+  border-radius : 10px;
+  border : 2px solid gold;
+  background-color : #1b1527;
+  color : #ffff9b
+}
+
+.imgDiv{
+  width : 180px;
+  background : url(../assets/react.svg) no-repeat center center;
+  background-size : cover;
+  border-radius : 90px;
+  display : fill;
+  border : 1px solid gold;
+}
+
+.textDiv {
+  display : flex;
+  width : 70%;
+  flex-direction : column;
+  gap : 20px;
+}
