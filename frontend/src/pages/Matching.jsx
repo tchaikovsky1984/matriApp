@@ -80,6 +80,11 @@ let config = {
           <div className = 'appContainer'>
               <button className = 'SwipeButton' onClick = {goForward}><ImCross/></button>
               <div className = 'matchDiv'>
+                <h1>{us.name}</h1>
+                <h3>{us.age}</h3>
+                <h3>{us.isMale ? 'Man' : 'Woman'}</h3>
+                <h3>{us.religion}</h3>
+                <h3>{us.job}</h3>
               </div>
               <button className = 'SwipeButton' onClick = {goForward}><ImCheckmark/></button>
           </div>
