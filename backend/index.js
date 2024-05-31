@@ -17,18 +17,18 @@ const app = express();
 app.use(express.json());
 
 // allowing all origins while in dev cors(*)
-app.use(cors());
+//app.use(cors());
 
-/*
- * allowing custom origins & methods while in production
-  * app.use(
-    * cors({
-    *   origin : 'http://localhost:xxxx','anoter one',
-    *   methods : ['GET', 'POST', 'PUT', 'DELETE'],
-    *   allowedHeaders : ['Content-Type'],
-    * })
-    * );
-*/
+
+// * allowing custom origins & methods while in production
+   app.use(
+     cors({
+       origin : 'http://localhost:5173',
+       methods : ['GET', 'POST', 'PUT', 'DELETE'],
+       allowedHeaders : ['Content-Type','Access-Control-Allow-Credentials'],
+       credentials : true,
+     })
+     );
 
 app.get("/", (request, response) => {
   console.log(request);
@@ -91,7 +91,20 @@ app.get('/auth/google/callback', passport.authenticate('google', {
 }));
 
 app.get('/login/success', async(req,res) => {
+  console.log("req", req.user);
+  if(req.user){
+    res.status(200).json({msg : 'usr logged in', usr : req.user});
+  }
+  else{
+    res.status(400).json({msg : 'usr not logged in '});
+  }
+});
 
+app.get('/logout', (req, res, next) => {
+  req.logout(function(err){
+    if(err){return next(err)}
+    res.redirect("http://localhost:5173");
+  })
 })
 
 mongoose

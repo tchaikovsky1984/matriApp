@@ -6,9 +6,16 @@ import SearchRow from './SearchRow.jsx';
 import { FaUserPlus } from 'react-icons/fa';
 import { CiLogin, CiLogout } from 'react-icons/ci';
 import { FaAddressBook } from 'react-icons/fa6';
+import { MdManageAccounts } from "react-icons/md";
 
-function Header() {
+function Header(props) {
   const [scroll, setScroll] = useState(false); 
+  const [a, setA] = useState(true);
+
+  useEffect(() => {
+    setA(!a);
+    console.log('acc', props.ax, a);
+  }, [props.ax]);
 
   const changeBackground = () => {
     if(window.scrollY >= 314){
@@ -25,10 +32,16 @@ function Header() {
     <div className = 'headerContainer'>
       <div className = {scroll ? 'navBar active' : 'navBar'}>
         <LogoDiv></LogoDiv>
-        <Link to='/signup'><div className = 'navBarItem'><FaUserPlus className = 'ic'/><span>Sign Up</span></div></Link>
-        <Link to='/login'><div className = 'navBarItem'><CiLogin className = 'ic'/><span>Login</span></div></Link>
+        { a &&
+          <Link to='/logout'><div className = 'navBarItem'><CiLogout className = 'ic'/><span>Logout</span></div></Link>
+        }
+        { !a &&
+          <Link to='/login'><div className = 'navBarItem'><CiLogin className = 'ic'/><span>Login</span></div></Link>
+        }
         <Link to='/contact'><div className = 'navBarItem'><FaAddressBook className ='ic'/><span>Contact</span></div></Link>
-        <Link to='/'><div className = 'navBarItem'><CiLogout className = 'ic'/><span>Log Out</span></div></Link>
+        { !a &&
+          <Link to='/account'><div className = 'navBarItem'><MdManageAccounts className = 'ic' /><span>Account</span></div></Link>
+        }
       </div>
       <h1 className = "headerText">Find your ideal partner</h1>
       <SearchRow></SearchRow>
