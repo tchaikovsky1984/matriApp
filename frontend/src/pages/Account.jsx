@@ -1,9 +1,14 @@
 import React from 'react';
+import './Account.css';
+import '../../../backend/routes/userRoute.js';
+import { User } from '../../../backend/models/userModel.js';
+import { useState, useEffect} from 'react';
 
 function Account(props){ 
 
   return (
-    <div><h1>Account Page</h1>
+    <div className = 'appCont'>
+      <div className = 'accBox'>
       <img src = {props.ax.image}/>
       <h2>{props.ax.displayName}</h2>
       <h3>{props.ax.email}</h3>
@@ -19,7 +24,10 @@ function Account(props){
       <input></input>
       <label>Religion : </label>
       <input></input>
-    </form></div>
+    </form>
+    <button onClick = {subUser}>Submit</button>
+      </div>
+    </div>
   );
 }
 
