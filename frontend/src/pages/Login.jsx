@@ -1,6 +1,15 @@
 import React from 'react';
 
 function Login(props){
+
+  if(Object.keys(props.ax).length > 0 ){
+    return (
+      <div className = 'logSquare'>
+        <h1>Please logout to login as another user.</h1>
+      </div>
+      );
+  }
+
   const loginGoogle = () => {
     window.open("http://localhost:5555/auth/google/callback","_self");
   }

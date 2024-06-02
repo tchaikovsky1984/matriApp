@@ -13,11 +13,15 @@ function App() {
     try{
       const response = await axios.get("http://localhost:5555/login/success", {withCredentials : true});
       console.log('res', response);
-      setAcc(response.data.user);
+      setAcc(response.data.usr);
     }
     catch(error){
       console.log(error);
     }
+  }
+
+  const logout = () => {
+    window.open("http://localhost:5555/logout", "_self");
   }
 
   useEffect(() => {
@@ -26,10 +30,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path = '/' element = /*{ Object.keys(acc) === 0 ? <Home ax = {acc}/> : <Matching/>}*/ <Home ax = {acc}/>/>
-      <Route path = '/match' element = {<Matching/>}/>
+      <Route path = '/' element = /*{ Object.keys(acc) === 0 ? <Home ax = {acc}/> : <Matching/>}*/ <Home ax = {acc} lx = {logout}/>/>
+      <Route path = '/match' element = {<Matching ax = {acc} lx = {logout}/>}/>
       <Route path = 'login' element = {<Login ax = {acc}/>}/>
-      <Route path = '/account' element = {<Account/>}/>
+      <Route path = '/account' element = {<Account ax = {acc} lx = {logout}/>}/>
     </Routes>
   );
 }

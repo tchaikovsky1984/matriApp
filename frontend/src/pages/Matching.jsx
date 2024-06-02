@@ -5,13 +5,15 @@ import Spinner from '../components/Spinner.jsx';
 import { ImCross, ImCheckmark} from 'react-icons/im';
 import './Matching.css';
 
-function Matching(){
+function Matching(props){
   const [users, setUsers] = useState([]) ;
   const [index, setIndex] = useState(0);
   const [acc, setAcc] = useState(false);
   const [accId, setAccId] = useState("");
   const [loading, setLoading] = useState(false);
   const [ended, setEnded] = useState(false);
+
+
 
   function goForward(){
     setIndex(index+1);

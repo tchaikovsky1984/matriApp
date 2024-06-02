@@ -33,13 +33,13 @@ function Header(props) {
       <div className = {scroll ? 'navBar active' : 'navBar'}>
         <LogoDiv></LogoDiv>
         { a &&
-          <Link to='/logout'><div className = 'navBarItem'><CiLogout className = 'ic'/><span>Logout</span></div></Link>
+          <div className = 'navBarItem'><CiLogout className = 'ic' onClick = {props.lx}/><span>Logout</span></div>
         }
         { !a &&
           <Link to='/login'><div className = 'navBarItem'><CiLogin className = 'ic'/><span>Login</span></div></Link>
         }
         <Link to='/contact'><div className = 'navBarItem'><FaAddressBook className ='ic'/><span>Contact</span></div></Link>
-        { !a &&
+        { a &&
           <Link to='/account'><div className = 'navBarItem'><MdManageAccounts className = 'ic' /><span>Account</span></div></Link>
         }
       </div>

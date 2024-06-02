@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { PORT, mongoURL } from "./config.js";
+import { PORT, mongoURL, clientid, clientsecret } from "./config.js";
 import mongoose from 'mongoose';
 import { User } from './models/userModel.js';
 import { Acc } from './models/accModel.js';
@@ -8,9 +8,6 @@ import userRoute from './routes/userRoute.js';
 import session from 'express-session';
 import passport from 'passport';
 import { Strategy } from 'passport-google-oauth2';
-
-const clientid = "15599539893-6vrr9apg824abt94rcr9q3aodrvva3cs.apps.googleusercontent.com";
-const clientsecret = "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";
 
 const app = express();
 
