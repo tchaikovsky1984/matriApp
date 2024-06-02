@@ -22,6 +22,7 @@ select, input{
   border : 0px;
   border-radius : 5px;
   color : #ffffff;
+  width : 100px;
 }
 
 button {

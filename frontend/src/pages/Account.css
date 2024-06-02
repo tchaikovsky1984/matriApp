@@ -21,12 +21,12 @@ img {
   border-radius : 25px; 
 }
 
-form {
+.f {
   display : flex;
   flex-direction : column;
 }
 
-input, select {
+.i, .s{
   width : 100px;
   margin : auto;
 }
